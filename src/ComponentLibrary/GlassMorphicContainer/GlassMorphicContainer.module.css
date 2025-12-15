@@ -1,0 +1,109 @@
+/* ============================================
+   CONTAINER BASE STYLES
+   ============================================ */
+
+.container {
+  /* Base glassmorphic effect */
+  background: var(--glass-bg);
+  border: var(--border-width) solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+
+  /* Layout */
+  position: relative;
+  overflow: hidden;
+
+  /* Transition */
+  transition: all var(--transition-normal);
+}
+
+/* ============================================
+   BLUR VARIANTS
+   ============================================ */
+
+.blur-light {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.blur-medium {
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+.blur-heavy {
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}
+
+/* ============================================
+   STYLE VARIANTS
+   ============================================ */
+
+.default {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+.bordered {
+  background: rgba(255, 255, 255, 0.03);
+  border: var(--border-width-thick) solid var(--color-accent-cyan);
+  box-shadow: var(--shadow-glass), var(--glow-cyan);
+}
+
+.solid {
+  background: var(--color-bg-secondary);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================
+   MODIFIERS
+   ============================================ */
+
+.rounded {
+  border-radius: var(--border-radius-lg);
+}
+
+/* ============================================
+   PADDING VARIANTS
+   ============================================ */
+
+.padding-none {
+  padding: 0;
+}
+
+.padding-small {
+  padding: var(--spacing-md);
+}
+
+.padding-medium {
+  padding: var(--spacing-xl);
+}
+
+.padding-large {
+  padding: var(--spacing-2xl);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .padding-medium {
+    padding: var(--spacing-lg);
+  }
+
+  .padding-large {
+    padding: var(--spacing-xl);
+  }
+
+  /* Reduce blur on mobile for better performance */
+  .blur-medium {
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+  }
+
+  .blur-heavy {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+}

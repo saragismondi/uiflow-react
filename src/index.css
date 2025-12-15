@@ -1,58 +1,217 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/**
+ * Global Styles - UI Flow Clone
+ * Imports design system and applies global base styles
+ */
+
+/* ============================================
+   DESIGN SYSTEM IMPORTS
+   ============================================ */
+
+@import './styles/variables.css';
+@import './styles/reset.css';
+
+/* ============================================
+   ROOT ELEMENT
+   ============================================ */
 
 :root {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  /* Color variables */
-  --primary-bg: #0a0a23;
-  --accent-cyan: #00ffff;
-  --accent-blue: #0099ff;
-  --glass-bg: rgba(255, 255, 255, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.2);
-
+  /* Color scheme for browser UI */
   color-scheme: dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: var(--primary-bg);
 
+  /* Base font settings */
+  font-family: var(--font-primary), var(--font-fallback);
+  font-size: 16px;
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-normal);
+
+  /* Text rendering optimization */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ============================================
+   BODY
+   ============================================ */
+
 body {
-  margin: 0;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  line-height: 1.2;
+/* Background with subtle gradient */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(0, 102, 255, 0.1) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
-a {
-  color: var(--accent-cyan);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: var(--accent-blue);
-}
-
-button {
-  cursor: pointer;
-  font-family: inherit;
-}
+/* ============================================
+   ROOT CONTAINER
+   ============================================ */
 
 #root {
   width: 100%;
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1 {
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+h2 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+h3 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+}
+
+h4 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+h5 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+}
+
+h6 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+}
+
+p {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+}
+
+/* ============================================
+   LINKS
+   ============================================ */
+
+a {
+  color: var(--color-accent-cyan);
+  transition: color var(--transition-normal);
+}
+
+a:hover {
+  color: var(--color-accent-blue);
+  text-shadow: var(--text-glow-cyan);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 4px;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Container */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Text Utilities */
+.text-center {
+  text-align: center;
+}
+
+.text-glow {
+  text-shadow: var(--text-glow-cyan);
+}
+
+/* Spacing Utilities */
+.mt-lg {
+  margin-top: var(--spacing-lg);
+}
+
+.mb-lg {
+  margin-bottom: var(--spacing-lg);
+}
+
+.py-xl {
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+/* ============================================
+   GLASSMORPHISM UTILITY
+   ============================================ */
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--border-width) solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass:hover {
+  background: var(--glass-bg-hover);
+}
+
+/* ============================================
+   RESPONSIVE TYPOGRAPHY
+   ============================================ */
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: var(--font-size-4xl);
+  }
+
+  h2 {
+    font-size: var(--font-size-3xl);
+  }
+
+  h3 {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    font-size: 13px;
+  }
+
+  h1 {
+    font-size: var(--font-size-3xl);
+  }
 }

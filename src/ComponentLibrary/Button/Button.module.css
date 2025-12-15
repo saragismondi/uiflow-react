@@ -1,0 +1,154 @@
+/* ============================================
+   BUTTON BASE STYLES
+   ============================================ */
+
+.button {
+  /* Reset */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+
+  /* Typography */
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  white-space: nowrap;
+
+  /* Layout */
+  border: var(--border-width) solid transparent;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+
+  /* Transitions */
+  transition: all var(--transition-normal);
+
+  /* User interaction */
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 2px;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+/* ============================================
+   SIZE VARIANTS
+   ============================================ */
+
+.small {
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  min-height: 32px;
+}
+
+.medium {
+  font-size: var(--font-size-base);
+  padding: var(--spacing-md) var(--spacing-xl);
+  min-height: 44px;
+}
+
+.large {
+  font-size: var(--font-size-lg);
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  min-height: 56px;
+}
+
+/* ============================================
+   STYLE VARIANTS
+   ============================================ */
+
+/* Primary Button - Glassmorphic with cyan glow */
+.primary {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-color: var(--color-accent-cyan);
+  color: var(--color-text-primary);
+  box-shadow: var(--glow-cyan);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glow-cyan-strong);
+  border-color: var(--color-accent-cyan);
+  transform: translateY(-2px);
+}
+
+.primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Secondary Button - Solid cyan background */
+.secondary {
+  background: var(--color-accent-cyan);
+  color: var(--color-bg-primary);
+  border-color: var(--color-accent-cyan);
+  font-weight: var(--font-weight-semibold);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--color-accent-blue);
+  border-color: var(--color-accent-blue);
+  box-shadow: var(--glow-cyan);
+  transform: translateY(-2px);
+}
+
+.secondary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Ghost Button - Transparent with border */
+.ghost {
+  background: transparent;
+  border-color: var(--glass-border);
+  color: var(--color-text-secondary);
+}
+
+.ghost:hover:not(:disabled) {
+  background: var(--glass-bg);
+  border-color: var(--color-accent-cyan);
+  color: var(--color-text-primary);
+  box-shadow: var(--glow-cyan);
+  transform: translateY(-2px);
+}
+
+.ghost:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* ============================================
+   MODIFIERS
+   ============================================ */
+
+.fullWidth {
+  width: 100%;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .button {
+    min-width: unset;
+  }
+
+  .large {
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-base);
+    min-height: 48px;
+  }
+}

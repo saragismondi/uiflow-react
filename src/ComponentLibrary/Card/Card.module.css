@@ -1,0 +1,97 @@
+/* ============================================
+   CARD BASE STYLES
+   ============================================ */
+
+.card {
+  /* Glassmorphic effect */
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  /* Border and shadow */
+  border: var(--border-width) solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-glass);
+
+  /* Transition */
+  transition: all var(--transition-normal);
+
+  /* Layout */
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================
+   PADDING VARIANTS
+   ============================================ */
+
+.padding-none {
+  padding: 0;
+}
+
+.padding-small {
+  padding: var(--spacing-md);
+}
+
+.padding-medium {
+  padding: var(--spacing-xl);
+}
+
+.padding-large {
+  padding: var(--spacing-2xl);
+}
+
+/* ============================================
+   INTERACTIVE STATES
+   ============================================ */
+
+/* Hover effect - lift card */
+.hover:hover {
+  transform: translateY(-5px);
+  background: var(--glass-bg-hover);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Clickable card cursor */
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:focus-visible {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 2px;
+}
+
+.clickable:active {
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   GLOW EFFECT
+   ============================================ */
+
+.glow {
+  box-shadow: var(--shadow-glass), var(--glow-cyan);
+}
+
+.glow.hover:hover {
+  box-shadow: var(--shadow-glass), var(--glow-cyan-strong);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .padding-medium {
+    padding: var(--spacing-lg);
+  }
+
+  .padding-large {
+    padding: var(--spacing-xl);
+  }
+
+  .hover:hover {
+    transform: translateY(-3px);
+  }
+}
