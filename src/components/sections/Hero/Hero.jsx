@@ -1,10 +1,11 @@
 import { Button } from '../../../ComponentLibrary'
+import ParticleNetwork from '../../canvas/ParticleNetwork'
 import styles from './Hero.module.css'
 
 /**
  * Hero Section Component
  * Main hero section with two-column layout
- * Based on ui-flow.com design
+ * Based on ui-flow.com design with interactive canvas animations
  */
 const Hero = () => {
   return (
@@ -43,24 +44,25 @@ const Hero = () => {
           {/* Right Column - Graphics */}
           <div className={styles.heroRight}>
             <div className={styles.graphicsContainer}>
-              {/* Placeholder for Particle Network Canvas */}
-              <div className={styles.particlePlaceholder}>
-                <div className={styles.placeholderText}>
-                  <span>Particle Network</span>
-                  <small>Canvas Animation</small>
-                </div>
+              {/* Particle Network Canvas */}
+              <div className={styles.particleContainer}>
+                <ParticleNetwork
+                  particleCount={100}
+                  maxDistance={150}
+                  particleSpeed={0.5}
+                  particleSize={2}
+                />
               </div>
 
-              {/* Placeholder for 3D Wireframe Cube */}
-              <div className={styles.wireframePlaceholder}>
+              {/* 3D Wireframe Cube */}
+              <div className={styles.wireframeContainer}>
                 <div className={styles.cube}>
                   <div className={styles.cubeFace}></div>
                   <div className={styles.cubeFace}></div>
                   <div className={styles.cubeFace}></div>
-                </div>
-                <div className={styles.placeholderText}>
-                  <span>3D Wireframe</span>
-                  <small>Coming Soon</small>
+                  <div className={styles.cubeFace}></div>
+                  <div className={styles.cubeFace}></div>
+                  <div className={styles.cubeFace}></div>
                 </div>
               </div>
             </div>
