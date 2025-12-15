@@ -1,0 +1,328 @@
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-4xl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================
+   HERO CONTENT LAYOUT
+   ============================================ */
+
+.heroContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-4xl);
+  align-items: center;
+  min-height: 80vh;
+}
+
+/* ============================================
+   LEFT COLUMN - CONTENT
+   ============================================ */
+
+.heroLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  z-index: 2;
+}
+
+.heroTitle {
+  margin: 0;
+  line-height: var(--line-height-tight);
+}
+
+.titleMain {
+  display: block;
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  text-shadow: var(--text-glow-cyan);
+  letter-spacing: 0.05em;
+  animation: glowPulse var(--duration-glow) ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow: var(--text-glow-cyan);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.4);
+  }
+}
+
+.heroSubtitle {
+  font-size: var(--font-size-2xl);
+  color: var(--color-accent-cyan);
+  font-weight: var(--font-weight-medium);
+  margin: 0;
+}
+
+.heroDescription {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  max-width: 600px;
+  margin: 0;
+}
+
+.heroActions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+/* ============================================
+   RIGHT COLUMN - GRAPHICS
+   ============================================ */
+
+.heroRight {
+  position: relative;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.graphicsContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================
+   PLACEHOLDER GRAPHICS
+   ============================================ */
+
+.particlePlaceholder,
+.wireframePlaceholder {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--border-width) solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  transition: all var(--transition-normal);
+}
+
+.particlePlaceholder {
+  width: 500px;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: float 6s ease-in-out infinite;
+}
+
+.wireframePlaceholder {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  right: 10%;
+  animation: floatReverse 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-20px);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+}
+
+.placeholderText {
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.placeholderText span {
+  display: block;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-sm);
+}
+
+.placeholderText small {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* Simple 3D Cube Animation */
+.cube {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateCube var(--duration-rotate) linear infinite;
+  margin-bottom: var(--spacing-md);
+}
+
+@keyframes rotateCube {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+.cubeFace {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 2px solid var(--color-accent-cyan);
+  background: rgba(0, 255, 255, 0.05);
+  box-shadow: var(--glow-cyan);
+}
+
+.cubeFace:nth-child(1) {
+  transform: rotateY(0deg) translateZ(40px);
+}
+
+.cubeFace:nth-child(2) {
+  transform: rotateY(90deg) translateZ(40px);
+}
+
+.cubeFace:nth-child(3) {
+  transform: rotateX(90deg) translateZ(40px);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .heroContent {
+    gap: var(--spacing-3xl);
+  }
+
+  .heroRight {
+    height: 500px;
+  }
+
+  .particlePlaceholder {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .heroContent {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+    min-height: auto;
+  }
+
+  .heroLeft {
+    text-align: center;
+    align-items: center;
+  }
+
+  .titleMain {
+    font-size: var(--font-size-4xl);
+  }
+
+  .heroDescription {
+    max-width: 100%;
+  }
+
+  .heroActions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .heroRight {
+    height: 400px;
+    order: -1;
+  }
+
+  .particlePlaceholder {
+    width: 300px;
+    height: 300px;
+  }
+
+  .wireframePlaceholder {
+    width: 150px;
+    height: 150px;
+    top: 5%;
+    right: 5%;
+  }
+
+  .cube {
+    width: 60px;
+    height: 60px;
+  }
+
+  .cubeFace {
+    width: 60px;
+    height: 60px;
+  }
+
+  .cubeFace:nth-child(1) {
+    transform: rotateY(0deg) translateZ(30px);
+  }
+
+  .cubeFace:nth-child(2) {
+    transform: rotateY(90deg) translateZ(30px);
+  }
+
+  .cubeFace:nth-child(3) {
+    transform: rotateX(90deg) translateZ(30px);
+  }
+}
+
+@media (max-width: 480px) {
+  .titleMain {
+    font-size: var(--font-size-3xl);
+  }
+
+  .heroSubtitle {
+    font-size: var(--font-size-xl);
+  }
+
+  .heroDescription {
+    font-size: var(--font-size-base);
+  }
+
+  .heroRight {
+    height: 300px;
+  }
+
+  .particlePlaceholder {
+    width: 250px;
+    height: 250px;
+  }
+
+  .wireframePlaceholder {
+    width: 120px;
+    height: 120px;
+  }
+}

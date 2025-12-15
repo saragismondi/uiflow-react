@@ -1,0 +1,62 @@
+/* ============================================
+   HOME PAGE
+   ============================================ */
+
+.home {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ============================================
+   DEVELOPMENT NAVIGATION
+   ============================================ */
+
+.devNav {
+  position: fixed;
+  bottom: var(--spacing-xl);
+  right: var(--spacing-xl);
+  z-index: var(--z-fixed);
+}
+
+.devLink {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--border-width) solid var(--glass-border);
+  border-radius: var(--border-radius-md);
+  color: var(--color-accent-cyan);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-glass);
+}
+
+.devLink:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--color-accent-cyan);
+  box-shadow: var(--shadow-glass), var(--glow-cyan);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .devNav {
+    bottom: var(--spacing-md);
+    right: var(--spacing-md);
+    left: var(--spacing-md);
+  }
+
+  .devLink {
+    width: 100%;
+    justify-content: center;
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}

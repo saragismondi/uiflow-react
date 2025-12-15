@@ -1,0 +1,55 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /react/
+
+  # Si el archivo o directorio existe, servir directamente
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Sino, redirigir a index.html para que React Router maneje la ruta
+  RewriteRule . /react/index.html [L]
+</IfModule>
+
+# Habilitar compresión GZIP (mejora velocidad de carga)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Cache control (mejora velocidad en visitas repetidas)
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # CSS y JavaScript - 1 año
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+
+  # Imágenes - 1 año
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+
+  # Fuentes - 1 año
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+
+  # HTML - sin cache (para que vean cambios inmediatamente)
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# Seguridad adicional
+<IfModule mod_headers.c>
+  # Prevenir clickjacking
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Prevenir MIME type sniffing
+  Header always set X-Content-Type-Options "nosniff"
+
+  # XSS Protection
+  Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
