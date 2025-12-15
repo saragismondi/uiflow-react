@@ -1,0 +1,57 @@
+.App {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a23 0%, #1a1a3a 100%);
+  color: #ffffff;
+}
+
+.App-header {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.App-header h1 {
+  font-size: 3rem;
+  margin: 0;
+  background: linear-gradient(90deg, #00ffff 0%, #0099ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.App-header p {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.author {
+  font-weight: 600;
+  color: #00ffff !important;
+}
+
+main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.welcome {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.welcome h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #00ffff;
+}
+
+.welcome p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0.5rem 0;
+}
